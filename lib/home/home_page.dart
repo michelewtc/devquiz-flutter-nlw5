@@ -1,3 +1,4 @@
+import 'package:dev_quiz/challenge/challenge_page.dart';
 import 'package:dev_quiz/core/app_colors.dart';
 import 'package:dev_quiz/home/home_state.dart';
 import 'package:dev_quiz/home/widgets/appbar/app_bar_widget.dart';
@@ -19,12 +20,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    super.initState();
     controller.getUser();
     controller.getQuizzes();
     controller.stateNotifier.addListener(() {
       setState(() {});
     });
+    super.initState();
   }
 
   Widget build(BuildContext context) {
@@ -34,7 +35,10 @@ class _HomePageState extends State<HomePage> {
             user: controller.user!,
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 15,
+            ),
             child: Column(
               children: [
                 SizedBox(
@@ -71,6 +75,12 @@ class _HomePageState extends State<HomePage> {
                               percent: e.questionAnswered / e.questions.length,
                               completed:
                                   "${e.questionAnswered}/${e.questions.length}",
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ChallengePage()));
+                              },
                             ))
                         .toList(),
                   ),
