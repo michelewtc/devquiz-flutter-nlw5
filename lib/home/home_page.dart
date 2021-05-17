@@ -1,12 +1,12 @@
 import 'package:dev_quiz/challenge/challenge_page.dart';
 import 'package:dev_quiz/core/app_colors.dart';
+import 'package:dev_quiz/home/home_controller.dart';
 import 'package:dev_quiz/home/home_state.dart';
 import 'package:dev_quiz/home/widgets/appbar/app_bar_widget.dart';
-import 'package:dev_quiz/home/widgets/level_button/level_button_widget.dart';
 import 'package:dev_quiz/home/widgets/quiz_card/quiz_card_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'home_controller.dart';
+import 'widgets/level_button/level_button_widget.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -20,14 +20,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    controller.getUser();
-    controller.getQuizzes();
+    super.initState();
+    controller.fetchData();
     controller.stateNotifier.addListener(() {
       setState(() {});
     });
-    super.initState();
+ 
   }
 
+  @override
   Widget build(BuildContext context) {
     if (controller.state == HomeState.success) {
       return Scaffold(
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 24,
+                  height: 18,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 SizedBox(
-                  height: 24,
+                  height: 18,
                 ),
                 Expanded(
                   child: GridView.count(
@@ -81,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                                     MaterialPageRoute(
                                         builder: (context) => ChallengePage(
                                               questions: e.questions,
-                                            )));
+                                        )));
                               },
                             ))
                         .toList(),
@@ -90,13 +91,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ));
-    } else {
-      return Scaffold(
-        body: Center(
-            child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(AppColors.darkGreen),
+    }
+    return Scaffold(
+      body: Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(AppColors.darkGreen),
         )),
       );
     }
   }
-}
