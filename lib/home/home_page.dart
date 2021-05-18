@@ -25,7 +25,6 @@ class _HomePageState extends State<HomePage> {
     controller.stateNotifier.addListener(() {
       setState(() {});
     });
- 
   }
 
   @override
@@ -82,7 +81,8 @@ class _HomePageState extends State<HomePage> {
                                     MaterialPageRoute(
                                         builder: (context) => ChallengePage(
                                               questions: e.questions,
-                                        )));
+                                              title: e.title,
+                                            )));
                               },
                             ))
                         .toList(),
@@ -95,8 +95,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Center(
           child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(AppColors.darkGreen),
-        )),
-      );
-    }
+        valueColor: AlwaysStoppedAnimation<Color>(AppColors.darkGreen),
+      )),
+    );
   }
+}

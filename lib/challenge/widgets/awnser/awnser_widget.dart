@@ -8,20 +8,21 @@ class AnswerWidget extends StatelessWidget {
   final AwnserModel anwser;
   final bool isSelected;
   final bool disabled;
-  final VoidCallback onTap;
+  final ValueChanged<bool> onTap;
 
   const AnswerWidget({
     Key? key,
     required this.anwser,
     required this.onTap,
-    this.isSelected = false, this.disabled = false,
+    this.isSelected = false,
+    this.disabled = false,
   }) : super(key: key);
 
   Color get _selectedColorRight =>
       anwser.isRight ? AppColors.darkGreen : AppColors.darkRed;
 
   Color get _selectedBorderRight =>
-     anwser.isRight ? AppColors.lightGreen : AppColors.lightRed;
+      anwser.isRight ? AppColors.lightGreen : AppColors.lightRed;
 
   Color get _selectedColorCardRight =>
       anwser.isRight ? AppColors.lightGreen : AppColors.lightRed;
@@ -40,15 +41,18 @@ class AnswerWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: IgnorePointer(
         ignoring: disabled,
-              child: GestureDetector(
-          onTap: onTap,
-                child: Container(
+        child: GestureDetector(
+          onTap: () {
+            onTap(anwser.isRight);
+          },
+          child: Container(
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
                 color: isSelected ? _selectedColorCardRight : AppColors.white,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.fromBorderSide(BorderSide(
-                  color: isSelected ? _selectedBorderCardRight : AppColors.white,
+                  color:
+                      isSelected ? _selectedBorderCardRight : AppColors.white,
                 ))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,8 +60,9 @@ class AnswerWidget extends StatelessWidget {
                 Expanded(
                   child: Text(
                     anwser.title,
-                    style:
-                        isSelected ? _selectedTextStyleRight : AppTextStyles.body,
+                    style: isSelected
+                        ? _selectedTextStyleRight
+                        : AppTextStyles.body,
                   ),
                 ),
                 Container(
