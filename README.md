@@ -1,16 +1,46 @@
-# devquiz
+# DevQuiz
 
-A new Flutter project.
+<p align="center">
+    Aplicativo desenvolvido durante a Next Level Week 05 🚀
+</p>
 
-## Getting Started
+## 🔥 Preview
+<p align="center">
+  <img alt="DevQuiz" src=".github/screens.PNG" width="100%">
+</p>
 
-This project is a starting point for a Flutter application.
+## 🔗 Links
 
-A few resources to get you started if this is your first Flutter project:
+- [Roteiro](https://www.notion.so/Trilha-Flutter-a306b8d8751b4f76a7a1fc8f29db6d65)
+- [Projeto no Figma](https://www.figma.com/file/oee9kcqSdTnFoA6Q89qxGg/DevQuiz-(Copy)?node-id=0%3A1)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## ⚡ Tecnologias
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
+
+## ⚒️ Extensões VSCode
+
+- Awesome Flutter Snippets
+- Dart
+- Dart Data Class Generator
+- Error lens
+- Flutter
+- Material Icon Theme
+
+## 🚀 Instalação
+```
+# Clone este repositório
+$ git clone https://github.com/michelewtc/devquiz-flutter-nlw5
+
+# Acesse a pasta do projeto
+$ cd devquiz
+
+# Instale as dependências
+$ flutter pub get
+
+# Rodar o aplicativo
+$ flutter run
+```
